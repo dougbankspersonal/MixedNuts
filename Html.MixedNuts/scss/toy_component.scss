@@ -1,0 +1,216 @@
+.card_array>.page_of_items_contents>.card.mixed-nuts-component {
+  //    filter: drop-shadow(0 0 8px red);
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark_shadowed {
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+.pseudo-image.floor,
+.pseudo-image.special_image {
+  height: 60px;
+  width: 60px;
+}
+
+.pseudo-image.coin {
+  height: 60px;
+  width: 60px;
+}
+
+.pseudo-image.desk {
+  height: 60px;
+  width: 60px;
+}
+
+.card.mixed-nuts-component {
+  font-family: "Mountains of Christmas", serif;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+  font-weight: bold;
+}
+
+.card.front {
+  .player_indicator {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    left: 0px;
+    width: 100%;
+
+    .player {
+      width: 36px;
+      height: 36px;
+    }
+
+    .player_count {
+      font-size: 28px;
+    }
+  }
+}
+
+.card.front.mixed-nuts-component {
+  padding-top: 27px;
+  padding-bottom: 27px;
+  padding-left: 14px;
+  padding-right: 14px;
+  position: relative;
+  border-width: 10px;
+  border-style: solid;
+
+  .component_image {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .white_outline.pseudo-image {
+    filter: drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white) drop-shadow(1px 1px 0 white);
+  }
+
+  .component_image.index0 {
+    top: 10px;
+    left: 10px;
+  }
+
+  .component_image.index1 {
+    top: 10px;
+    right: 10px;
+  }
+
+  .component_image.index_xl {
+    top: -50%;
+    left: -50%;
+    transform: translate(50%, 50%);
+  }
+
+  .main_wrapper {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    font-size: 40px;
+    gap: 10px;
+
+    .unbroken_row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .reward_points {
+      font-size: 14px;
+      font-weight: bold;
+      display: inline;
+    }
+
+    .title {
+      font-size: 36px;
+
+      white-space: pre-line;
+    }
+
+    .craft_wrapper {
+      .card_collection {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+
+        .minicard {
+          position: absolute;
+          top: 0px;
+        }
+      }
+
+    }
+
+    .floor_wrapper {
+      .colon_and_points .negative {
+        color: #994444;
+      }
+    }
+
+    .colon_and_points {
+      white-space: nowrap;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .minicard {
+      border-radius: 10px;
+      background-color: #fffff0;
+      transform: rotate(-5deg);
+      filter: drop-shadow(8px 8px 4px rgba(0, 0, 0, 0.15));
+    }
+
+    .images_wrapper {
+      display: flex;
+      flex-direction: row;
+
+      .pseudo-image {
+        height: 50px;
+        width: 50px;
+      }
+
+      .pseudo-image.plus_one_pt {
+        width: 70px;
+      }
+    }
+
+    .custom {
+      font-size: 35px;
+    }
+
+    .penalty {
+      white-space: nowrap;
+    }
+
+    .special_custom.small {
+      font-size: 25px;
+    }
+  }
+}
+
+.card.front.mixed-nuts-component .wrapper .special_customs_wrapper .special_custom {
+  margin: 0 6px;
+}
+
+.card.back.mixed-nuts-component {
+  border-width: 10px;
+  border-style: solid;
+}
+
+.card.back.mixed-nuts-component .inset {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .cardBackTitle {
+    font-size: 40px;
+    font-family: "Mountains of Christmas", serif;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+      1px 1px 0 #fff;
+    font-weight: bold;
+    white-space: wrap;
+  }
+
+  .boss {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+}
