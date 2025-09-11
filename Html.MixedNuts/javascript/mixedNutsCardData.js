@@ -4,23 +4,23 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
   // Constants
   //
   //-----------------------------------------
-  const specialBorderColor = "#FFD700";
-  const basicBorderColor = "#000066";
-  const radioBorderColor = "#006600";
-  const pooBorderColor = "#593002";
+  const basicBorderColor = "#5c4033";
+  const macadamiaBorderColor = "#2c1810";
+  const badNutBorderColor = "#aa3002";
+  const specialBorderColor = "#ffee00";
 
-  const dollBackgroundColor = "#C7CEFF";
-  const kiteBackgroundColor = "#6495ED";
-  const robotBackgroundColor = "#000080";
-  const radioBackgroundColor = "#00aa00";
-  const pooBackgroundColor = "#886633";
+  const peanutBackgroundColor = "#f5deb3";
+  const almondBackgroundColor = "#deb887";
+  const cashewBackgroundColor = "#d2a679";
+  const macadamiaBackgroundColor = "#a9745d";
+  const badNutBackgroundColor = "#e6b3a1";
 
   const wrappingPaperBackgroundColor = "#FF8844";
   const elfMagicBackgroundColor = "#FF8888";
   const broomBackgroundColor = "#FFFF88";
   const glovesBackgroundColor = "#FF4488";
   const cyborgBackgroundColor = "#FF88FF";
-  const fruitcakeBackgroundColor = "#884444";
+  const coffeeBreakBackgroundColor = "#884444";
   const satinBackgroundColor = "#FFCC44";
 
   const CustomTypeText = "Text";
@@ -64,7 +64,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       },
       floor: -2,
       playType: "normal",
-      color: dollBackgroundColor,
+      color: peanutBackgroundColor,
       borderColor: basicBorderColor,
       countConfigs: [
         {
@@ -86,16 +86,17 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       ],
     },
     {
-      title: "Kite",
-      class: "kite",
+      title: "Almond",
+      class: "almond",
+      color: almondBackgroundColor,
+      borderColor: basicBorderColor,
       craft: {
         number: 3,
         points: 3,
       },
       floor: -3,
       playType: "normal",
-      color: kiteBackgroundColor,
-      borderColor: basicBorderColor,
+
       countConfigs: [
         {
           numCards: 15,
@@ -116,16 +117,17 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       ],
     },
     {
-      title: "Robot",
-      class: "robot",
+      title: "Cashew",
+      class: "cashew",
+      color: cashewBackgroundColor,
+      borderColor: basicBorderColor,
+
       craft: {
         number: 3,
         points: 4,
       },
       floor: -4,
       playType: "normal",
-      color: robotBackgroundColor,
-      borderColor: basicBorderColor,
       countConfigs: [
         {
           numCards: 10,
@@ -146,16 +148,17 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       ],
     },
     {
-      title: "Radio",
-      class: "radio",
+      title: "Macadamia",
+      class: "macadamia",
+      color: macadamiaBackgroundColor,
+      borderColor: macadamiaBorderColor,
       craft: {
         number: 4,
         points: 7,
       },
       floor: -5,
       playType: "challenge",
-      color: radioBackgroundColor,
-      borderColor: radioBorderColor,
+      fontAdjustment: 0.8,
       countConfigs: [
         {
           numCards: 9,
@@ -176,45 +179,43 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       ],
     },
     {
-      title: "Reindeer Poo",
-      class: "poo",
+      title: "Bad Nut",
+      class: "bad-nut",
       craft: {
         number: 0,
         points: 0,
       },
       floor: -5,
       playType: "special",
-      color: pooBackgroundColor,
-      borderColor: pooBorderColor,
+      color: badNutBackgroundColor,
+      borderColor: badNutBorderColor,
       countConfigs: specialCounts,
     },
     {
-      title: "Wrapping Paper",
-      class: "wrappingPaper",
-      specialCustoms: [
-        {
-          type: gCustomTypes.Text,
-          text: "+",
+      title: "Honey Roasted",
+      class: "honey-roasted",
+      customRendering: {
+        useClassToIndexFunction: true,
+        nutToBonusMap: {
+          peanut: 1,
+          almond: 2,
+          cashew: 3,
+          macadamia: 4,
         },
-        {
-          type: gCustomTypes.Image,
-          imageClass: "package",
-        },
-        {
-          type: gCustomTypes.PtsText,
-          points: 3,
-        },
-      ],
+        wrapperScale: 0.6,
+      },
       playType: "special",
       color: wrappingPaperBackgroundColor,
       borderColor: specialBorderColor,
       countConfigs: specialCounts,
     },
     {
-      title: "Elf Magic",
-      class: "elfMagic",
-      specialImageClasses: ["peanut", "kite", "robot"],
-      specialImagesSeparator: "/",
+      title: "Raisin",
+      class: "raisin",
+      customRendering: {
+        customRenderingImageClasses: ["peanut", "almond", "cashew"],
+        specialImagesSeparator: "/",
+      },
       playType: "special",
       color: elfMagicBackgroundColor,
       borderColor: specialBorderColor,
@@ -223,20 +224,9 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
     {
       title: "Broom",
       class: "broom",
-      specialCustoms: [
-        {
-          type: CustomTypeImage,
-          imageClass: "floor",
-        },
-        {
-          type: CustomTypeImage,
-          imageClass: "rightArrow",
-        },
-        {
-          type: CustomTypeImage,
-          imageClass: "noSymbol",
-        },
-      ],
+      customRendering: {
+        customRenderingImageClasses: ["floor", "rightArrow", "noSymbol"],
+      },
       playType: "special",
       color: broomBackgroundColor,
       borderColor: specialBorderColor,
@@ -245,52 +235,45 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
     {
       title: "Gloves",
       class: "gloves",
-      specialImageClasses: ["floor", "rightArrow", "desk"],
       playType: "special",
+      customRendering: {
+        customRenderingImageClasses: ["floor", "rightArrow", "desk"],
+      },
       color: glovesBackgroundColor,
       borderColor: specialBorderColor,
       countConfigs: specialCounts,
     },
     {
-      title: "RC<br>Drone-Borg",
-      class: "cyborg",
-      imagesWrapperScale: 0.6,
-      specialImageClasses: ["peanut", "kite", "robot", "radio"],
-      specialImagesSeparator: "+",
-      specialCustoms: [
-        {
-          type: gCustomTypes.PtsText,
-          points: 5,
-        },
-      ],
+      title: "Mixed Nuts",
+      class: "mixed-nuts",
+      customRendering: {
+        points: 5,
+        useClassToIndexFunction: true,
+        wrapperScale: 0.8,
+      },
       playType: "special",
       color: cyborgBackgroundColor,
       borderColor: specialBorderColor,
       countConfigs: specialCounts,
     },
     {
-      title: "Fruitcake",
-      class: "fruitcake",
-      specialImageClasses: ["desk", "doubleArrow", "desk"],
+      title: "Coffee Break",
+      class: "coffee-break",
+      customRendering: {
+        customRenderingImageClasses: ["desk", "doubleArrow", "desk"],
+      },
       playType: "special",
-      color: fruitcakeBackgroundColor,
+      color: coffeeBreakBackgroundColor,
       borderColor: specialBorderColor,
       countConfigs: specialCounts,
     },
     {
-      title: "Satin",
-      class: "satin",
-      specialCustoms: [
-        {
-          type: CustomTypeImage,
-          imageClass: "peanut",
-        },
-        {
-          type: gCustomTypes.PtsText,
-          points: 1,
-          plusSign: true,
-        },
-      ],
+      title: "Hot Spice",
+      class: "hot-spice",
+      customRendering: {
+        points: 1,
+        useClassToIndexFunction: true,
+      },
       playType: "special",
       color: satinBackgroundColor,
       borderColor: specialBorderColor,

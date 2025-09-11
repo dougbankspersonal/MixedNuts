@@ -2,7 +2,7 @@
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
 }
 
-.dark_shadowed {
+.dark-shadowed {
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
@@ -23,9 +23,8 @@
 }
 
 .card.mixed-nuts-component {
-  font-family: "Mountains of Christmas", serif;
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-    1px 1px 0 #fff;
+  font-family: "Luckiest Guy";
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   font-weight: bold;
 }
 
@@ -62,9 +61,8 @@
   position: absolute;
   z-index: 2;
 }
-.card.front.mixed-nuts-component .white_outline.pseudo-image {
-  filter: drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white)
-    drop-shadow(-1px 1px 0 white) drop-shadow(1px 1px 0 white);
+.card.front.mixed-nuts-component .drop_shadow.pseudo-image {
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.4));
 }
 .card.front.mixed-nuts-component .component_image.index0 {
   top: 10px;
@@ -105,28 +103,22 @@
 .card.front.mixed-nuts-component .main_wrapper .title {
   font-size: 36px;
   white-space: pre-line;
+  line-height: 1;
 }
-.card.front.mixed-nuts-component .main_wrapper .craft_wrapper .card_collection {
+.card.front.mixed-nuts-component .main_wrapper .craft_wrapper .card-collection {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
+  padding-right: 10px;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .craft_wrapper
-  .card_collection
-  .minicard {
+.card.front.mixed-nuts-component .main_wrapper .craft_wrapper .card-collection .minicard {
   position: absolute;
   top: 0px;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .floor_wrapper
-  .colon_and_points
-  .negative {
+.card.front.mixed-nuts-component .main_wrapper .floor_wrapper .colon_and_points .negative {
   color: #994444;
 }
 .card.front.mixed-nuts-component .main_wrapper .colon_and_points {
@@ -142,19 +134,31 @@
   transform: rotate(-5deg);
   filter: drop-shadow(8px 8px 4px rgba(0, 0, 0, 0.15));
 }
-.card.front.mixed-nuts-component .main_wrapper .images_wrapper {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper {
   display: flex;
   flex-direction: row;
 }
-.card.front.mixed-nuts-component .main_wrapper .images_wrapper .pseudo-image {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .pseudo-image {
   height: 50px;
   width: 50px;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .images_wrapper
-  .pseudo-image.plus_one_pt {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .pseudo-image.plus-one-pt {
   width: 70px;
+}
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .nut-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .nut-rows .nut-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper.mixed-nuts .nut-rows {
+  padding-right: 10px;
 }
 .card.front.mixed-nuts-component .main_wrapper .custom {
   font-size: 35px;
@@ -166,35 +170,43 @@
   font-size: 25px;
 }
 
-.card.front.mixed-nuts-component
-  .wrapper
-  .special_customs_wrapper
-  .special_custom {
+.card.front.mixed-nuts .wrapper .special_customs_wrapper .special_custom {
   margin: 0 6px;
 }
 
-.card.back.mixed-nuts-component {
+.card.back.mixed-nuts {
   border-width: 10px;
   border-style: solid;
+  border-color: #664433;
 }
-
-.card.back.mixed-nuts-component .inset {
+.card.back.mixed-nuts .inset {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background: radial-gradient(#eeccaa 50%, #997755);
 }
-.card.back.mixed-nuts-component .inset .cardBackTitle {
-  font-size: 40px;
-  font-family: "Mountains of Christmas", serif;
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-    1px 1px 0 #fff;
+.card.back.mixed-nuts .inset .mixed-nuts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+}
+.card.back.mixed-nuts .inset .title {
+  font-size: 36px;
+  line-height: 1;
+  font-family: "Luckiest Guy";
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   font-weight: bold;
   white-space: wrap;
-}
-.card.back.mixed-nuts-component .inset .santa {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
+  width: 80%;
+  text-align: center;
+  white-space: normal;
+  color: #332211;
 }
 
-/*# sourceMappingURL=mixed-nuts-component.css.map */
+/*# sourceMappingURL=mixed_nuts_components.css.map */
