@@ -1,0 +1,6 @@
+[submodule "SharedWebBoardgame"]
+	path = SharedWebBoardgame
+	url = https://github.com/dougbankspersonal/SharedWebBoardgame.git
+[submodule "Html.MixedNuts/SharedWebBoardgame"]
+	path = Html.MixedNuts/SharedWebBoardgame
+	url = https://github.com/dougbankspersonal/SharedWebBoardgame.git
