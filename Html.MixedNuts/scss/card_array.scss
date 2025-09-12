@@ -1,0 +1,21 @@
+.card-array.page-of-items {
+  overflow: visible;
+
+  .page-of-items-contents {
+    .array-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      height: fit-content;
+      padding: 20px;
+
+      .mixed-nuts-component.card {
+        margin-right: -60px;
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.18);
+      }
+    }
+  }
+}

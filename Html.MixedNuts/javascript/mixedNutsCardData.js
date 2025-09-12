@@ -1,4 +1,4 @@
-define(["javascript/gameInfo", "dojo/domReady!"], function () {
+define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
   //-----------------------------------------
   //
   // Constants
@@ -38,19 +38,19 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
   const specialCounts = [
     {
       numPlayers: 2,
-      numCards: 1,
-    },
-    {
-      numPlayers: 3,
       numCards: 2,
     },
     {
-      numPlayers: 4,
+      numPlayers: 3,
       numCards: 3,
     },
     {
+      numPlayers: 4,
+      numCards: 4,
+    },
+    {
       numPlayers: 5,
-      numCards: 3,
+      numCards: 5,
     },
   ];
 
@@ -68,20 +68,20 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       borderColor: basicBorderColor,
       countConfigs: [
         {
-          numCards: 19,
           numPlayers: 2,
+          numCards: 20,
         },
         {
-          numCards: 25,
           numPlayers: 3,
+          numCards: 30,
         },
         {
-          numCards: 31,
           numPlayers: 4,
+          numCards: 40,
         },
         {
-          numCards: 37,
           numPlayers: 5,
+          numCards: 50,
         },
       ],
     },
@@ -99,19 +99,19 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
 
       countConfigs: [
         {
-          numCards: 15,
+          numCards: 16,
           numPlayers: 2,
         },
         {
-          numCards: 19,
+          numCards: 24,
           numPlayers: 3,
         },
         {
-          numCards: 24,
+          numCards: 32,
           numPlayers: 4,
         },
         {
-          numCards: 29,
+          numCards: 40,
           numPlayers: 5,
         },
       ],
@@ -130,19 +130,19 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       playType: "normal",
       countConfigs: [
         {
-          numCards: 10,
+          numCards: 7,
           numPlayers: 2,
         },
         {
-          numCards: 13,
+          numCards: 14,
           numPlayers: 3,
         },
         {
-          numCards: 16,
+          numCards: 21,
           numPlayers: 4,
         },
         {
-          numCards: 19,
+          numCards: 28,
           numPlayers: 5,
         },
       ],
@@ -169,11 +169,11 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
           numPlayers: 3,
         },
         {
-          numCards: 13,
+          numCards: 17,
           numPlayers: 4,
         },
         {
-          numCards: 17,
+          numCards: 21,
           numPlayers: 5,
         },
       ],
@@ -225,7 +225,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       title: "Broom",
       class: "broom",
       customRendering: {
-        customRenderingImageClasses: ["floor", "rightArrow", "noSymbol"],
+        customRenderingImageClasses: ["floor", "right-arrow", "no-symbol"],
       },
       playType: "special",
       color: broomBackgroundColor,
@@ -237,7 +237,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       class: "gloves",
       playType: "special",
       customRendering: {
-        customRenderingImageClasses: ["floor", "rightArrow", "desk"],
+        customRenderingImageClasses: ["floor", "right-arrow", "desk"],
       },
       color: glovesBackgroundColor,
       borderColor: specialBorderColor,
@@ -260,7 +260,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function () {
       title: "Coffee Break",
       class: "coffee-break",
       customRendering: {
-        customRenderingImageClasses: ["desk", "doubleArrow", "desk"],
+        customRenderingImageClasses: ["desk", "double-arrow", "desk"],
       },
       playType: "special",
       color: coffeeBreakBackgroundColor,

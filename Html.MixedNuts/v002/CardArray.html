@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/mixed_nuts_images.css" />
+    <link rel="stylesheet" href="../css/mixed_nuts_components.css" />
+    <link rel="stylesheet" href="../css/card_array.css" />
+    <link rel="stylesheet" href="../SharedWebBoardGame/css/card.css" />
+    <link rel="stylesheet" href="../SharedWebBoardGame/css/main.css" />
+    <link rel="stylesheet" href="../SharedWebBoardGame/css/image.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <style type="text/css"></style>
+  </head>
+
+  <body id="body">
+    <!-- configure Dojo -->
+    <script>
+      // Instead of using data-dojo-config, we're creating a dojoConfig
+      // object *before* we load dojo.js; they're functionally identical,
+      // it's just easier to read this approach with a larger configuration.
+      var dojoConfig = {
+        baseUrl: "..",
+        async: true,
+        // This code registers the correct location of the "demo"
+        // package so we can load Dojo from the CDN whilst still
+        // being able to load local modules
+        packages: [
+          { name: "dojo", location: "../../bower_components/dojo" },
+          { name: "javascript", location: "javascript" },
+          {
+            name: "sharedJavascript",
+            location: "SharedWebBoardgame/javascript",
+          },
+        ],
+      };
+    </script>
+    <!-- load Dojo -->
+    <script src="../../../bower_components/dojo/dojo.js"></script>
+
+    <script>
+      require([
+        "dojo/dom",
+        "dojo/dom-style",
+        "sharedJavascript/cards",
+        "sharedJavascript/debugLog",
+        "sharedJavascript/genericUtils",
+        "sharedJavascript/htmlUtils",
+        "sharedJavascript/systemConfigs",
+        "javascript/mixedNutsCards",
+      ], function (
+        dom,
+        domStyle,
+        cards,
+        debugLogModule,
+        genericUtils,
+        htmlUtils,
+        systemConfigs,
+        mixedNutsCards
+      ) {
+        var debugLog = debugLogModule.debugLog;
+
+        const gCardWiggleDegrees = 7;
+        var getRandomZeroToOne =
+          genericUtils.createSeededGetZeroToOneRandomFunction(9455002);
+        var sc = systemConfigs.getCardSystemConfigs();
+        sc.pageless = true;
+        systemConfigs.setSystemConfigs(sc);
+
+        var sortedCardConfigTitles = [
+          "Peanut",
+          "Peanut",
+          "Peanut",
+          "Almond",
+          "Almond",
+
+          "Almond",
+          "Cashew",
+          "Cashew",
+          "Macadamia",
+          "Bad Nut",
+
+          "Broom",
+          "Honey Roasted",
+          "Raisin",
+        ];
+
+        var randomizedCardConfigTitles = genericUtils.generateRandomizedArray(
+          sortedCardConfigTitles,
+          getRandomZeroToOne
+        );
+
+        var bodyNode = dom.byId("body");
+        [_pageOfItemsNode, pageOfItemsContentsNode] =
+          htmlUtils.addPageOfItemsAndContents(bodyNode, ["card-array"]);
+        var cardArrayNode = htmlUtils.addDiv(
+          pageOfItemsContentsNode,
+          ["array-wrapper"],
+          "array-wrapper"
+        );
+
+        for (var i = 0; i < randomizedCardConfigTitles.length; i++) {
+          var title = randomizedCardConfigTitles[i];
+          var cardConfig = mixedNutsCards.getCardConfigByTitle(title);
+          if (!cardConfig) {
+            debugLog.log("No card config found for title: " + title);
+          } else {
+            var cardNode;
+            // Final card is face down.
+            if (i == randomizedCardConfigTitles.length - 1) {
+              cardNode = mixedNutsCards.addCardBack(cardArrayNode, i);
+            } else {
+              cardNode = mixedNutsCards.addCardFront(
+                cardArrayNode,
+                cardConfig,
+                i,
+                0
+              );
+            }
+            var randomDegrees = genericUtils.getRandomIntInRange(
+              -gCardWiggleDegrees,
+              gCardWiggleDegrees,
+              getRandomZeroToOne
+            );
+            debugLog("CardArray", "randomDegrees: " + randomDegrees);
+
+            domStyle.set(cardNode, {
+              transform: `rotate(${randomDegrees}deg)`,
+              "z-index": randomizedCardConfigTitles.length + 1 - i,
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

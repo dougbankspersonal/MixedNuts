@@ -23,15 +23,11 @@ div.pseudo-image.macadamia {
 }
 
 div.pseudo-image.bad-nut {
-  background-image: url("../images/Cards/special-sprites-3.png");
-  background-position: 0% 0%;
-  background-size: 200% 100%;
+  background-image: url("../images/Cards/bad-nut.png");
 }
 
 div.pseudo-image.raisin {
-  background-image: url("../images/Cards/special-sprites-3.png");
-  background-size: 200% 100%;
-  background-position: 100% 0%;
+  background-image: url("../images/Cards/raisin.png");
 }
 
 div.pseudo-image.honey-roasted {
@@ -50,8 +46,8 @@ div.pseudo-image.broom {
   background-size: 200% 200%;
 }
 
-div.pseudo-image.noSymbol {
-  background-image: url("../images/Cards/noSymbol.png");
+div.pseudo-image.no-symbol {
+  background-image: url("../images/Cards/no-symbol.png");
 }
 
 div.pseudo-image.plus-one-pt {
@@ -81,6 +77,9 @@ div.pseudo-image.knife {
 }
 
 div.pseudo-image.arrow {
+  background-image: url("../images/Cards/special-sprites-4.png");
+  background-size: 200% 200%;
+  background-position: 0% 100%;
   background-image: url("../images/Cards/arrow.png");
 }
 
@@ -101,7 +100,9 @@ div.pseudo-image.coffee-break {
 }
 
 div.pseudo-image.floor {
-  background-image: url("../images/Cards/floor.png");
+  background-image: url("../images/Cards/special-sprites-4.png");
+  background-size: 200% 200%;
+  background-position: 0% 0%;
 }
 
 div.pseudo-image.boss {
@@ -112,12 +113,16 @@ div.pseudo-image.boss-head {
   background-image: url("../images/Trackers/boss-head.png");
 }
 
-div.pseudo-image.doubleArrow {
-  background-image: url("../images/Cards/doubleArrow.png");
+div.pseudo-image.double-arrow {
+  background-image: url("../images/Cards/special-sprites-4.png");
+  background-size: 200% 200%;
+  background-position: 100% 100%;
 }
 
-div.pseudo-image.rightArrow {
-  background-image: url("../images/Cards/rightArrow.png");
+div.pseudo-image.right-arrow {
+  background-image: url("../images/Cards/special-sprites-4.png");
+  background-size: 200% 200%;
+  background-position: 0% 100%;
 }
 
 div.pseudo-image.player {
@@ -131,7 +136,9 @@ div.pseudo-image.coin {
 }
 
 div.pseudo-image.desk {
-  background-image: url("../images/Cards/desk.png");
+  background-image: url("../images/Cards/special-sprites-4.png");
+  background-size: 200% 200%;
+  background-position: 100% 0%;
 }
 
 div.pseudo-image.x {

@@ -109,7 +109,7 @@ define([
 
   function renderHotSpiceCustom(parentNode, customRendering) {
     // +1 per peanut.
-    htmlUtils.addDiv(parentNode, ["plus"], "plus", "+");
+    htmlUtils.addDiv(parentNode, ["plus"], "plus", "+1");
     htmlUtils.addImage(parentNode, ["coin", "dark-shadowed"], "coin");
     htmlUtils.addDiv(parentNode, ["per"], "per", "/");
     htmlUtils.addImage(parentNode, ["peanut", "dark-shadowed"], "peanut");
@@ -338,7 +338,7 @@ define([
   function addCannotBeCraftedNode(parent) {
     var cannotBeCraftedNode = htmlUtils.addDiv(
       parent,
-      ["cannot_be_crafted"],
+      ["cannot-be-crafted"],
       "cannotBeCrafted"
     );
     var deskNode = htmlUtils.addImage(
@@ -346,7 +346,7 @@ define([
       ["desk", "dark-shadowed"],
       "desk"
     );
-    htmlUtils.addImage(deskNode, ["noSymbol"], "noSymbol");
+    htmlUtils.addImage(cannotBeCraftedNode, ["no-symbol"], "no-symbol");
     return cannotBeCraftedNode;
   }
 
@@ -357,7 +357,7 @@ define([
       if (craftConfig.number > 0) {
         craftingNode = htmlUtils.addDiv(
           parentNode,
-          ["craft_wrapper", "unbroken_row"],
+          ["craft-wrapper", "unbroken-row"],
           "craftWrapper"
         );
         addMiniCardCollection(craftingNode, craftConfig);
@@ -373,7 +373,7 @@ define([
     if (cardConfig.floor) {
       var floorWrapperNode = htmlUtils.addDiv(
         parentNode,
-        ["floor_wrapper", "unbroken_row"],
+        ["floor_wrapper", "unbroken-row"],
         "floorWrapper"
       );
       var floorImageNode = htmlUtils.addImage(
@@ -545,6 +545,6 @@ define([
     addCardFront: addCardFront,
     addCardFrontAtIndex: addCardFrontAtIndex,
     addCardBack: addCardBack,
-    getConfigByTitle: getCardConfigByTitle,
+    getCardConfigByTitle: getCardConfigByTitle,
   };
 });

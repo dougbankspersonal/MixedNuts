@@ -1,4 +1,4 @@
-.card_array > .page_of_items_contents > .card.mixed-nuts-component {
+.card_array > .page-of-items-contents > .card.mixed-nuts-component {
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -24,7 +24,8 @@
 
 .card.mixed-nuts-component {
   font-family: "Luckiest Guy";
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
   font-weight: bold;
 }
 
@@ -88,7 +89,7 @@
   font-size: 40px;
   gap: 10px;
 }
-.card.front.mixed-nuts-component .main_wrapper .unbroken_row {
+.card.front.mixed-nuts-component .main_wrapper .unbroken-row {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -105,7 +106,7 @@
   white-space: pre-line;
   line-height: 1;
 }
-.card.front.mixed-nuts-component .main_wrapper .craft_wrapper .card-collection {
+.card.front.mixed-nuts-component .main_wrapper .craft-wrapper .card-collection {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -114,11 +115,34 @@
   position: relative;
   padding-right: 10px;
 }
-.card.front.mixed-nuts-component .main_wrapper .craft_wrapper .card-collection .minicard {
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .craft-wrapper
+  .card-collection
+  .minicard {
   position: absolute;
   top: 0px;
 }
-.card.front.mixed-nuts-component .main_wrapper .floor_wrapper .colon_and_points .negative {
+.card.front.mixed-nuts-component .main_wrapper .cannot-be-crafted {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.card.front.mixed-nuts-component .main_wrapper .cannot-be-crafted .no-symbol {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .floor_wrapper
+  .colon_and_points
+  .negative {
   color: #994444;
 }
 .card.front.mixed-nuts-component .main_wrapper .colon_and_points {
@@ -138,26 +162,42 @@
   display: flex;
   flex-direction: row;
 }
-.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .pseudo-image {
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .custom-rendering-wrapper
+  .pseudo-image {
   height: 50px;
   width: 50px;
 }
-.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .pseudo-image.plus-one-pt {
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .custom-rendering-wrapper
+  .pseudo-image.plus-one-pt {
   width: 70px;
 }
-.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .nut-rows {
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .custom-rendering-wrapper
+  .nut-rows {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .nut-rows .nut-row {
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .custom-rendering-wrapper
+  .nut-rows
+  .nut-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper.mixed-nuts .nut-rows {
+.card.front.mixed-nuts-component
+  .main_wrapper
+  .custom-rendering-wrapper.mixed-nuts
+  .nut-rows {
   padding-right: 10px;
 }
 .card.front.mixed-nuts-component .main_wrapper .custom {
@@ -200,7 +240,8 @@
   font-size: 36px;
   line-height: 1;
   font-family: "Luckiest Guy";
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff;
   font-weight: bold;
   white-space: wrap;
   width: 80%;

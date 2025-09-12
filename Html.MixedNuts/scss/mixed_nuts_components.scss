@@ -1,4 +1,4 @@
-.card_array>.page_of_items_contents>.card.mixed-nuts-component {
+.card_array>.page-of-items-contents>.card.mixed-nuts-component {
   //    filter: drop-shadow(0 0 8px red);
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
 }
@@ -99,7 +99,7 @@
     font-size: 40px;
     gap: 10px;
 
-    .unbroken_row {
+    .unbroken-row {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -119,7 +119,7 @@
       line-height: 1;
     }
 
-    .craft_wrapper {
+    .craft-wrapper {
       .card-collection {
         display: flex;
         flex-direction: row;
@@ -134,7 +134,23 @@
           top: 0px;
         }
       }
+    }
 
+    .cannot-be-crafted {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .no-symbol {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
 
     .floor_wrapper {
