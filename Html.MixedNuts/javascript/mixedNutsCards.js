@@ -415,42 +415,30 @@ define([
   }
 
   function addCardBack(parent, index) {
-    var backNode = htmlUtils.addCard(parent, ["back", "mixed-nuts"], "back");
+    var backNode = htmlUtils.addCard(
+      parent,
+      ["back", "mixed-nuts"],
+      "back-" + index
+    );
 
     cards.setCardSize(backNode);
 
-    var insetNode = htmlUtils.addDiv(backNode, ["inset"], "inset");
+    var insetNode = htmlUtils.addDiv(backNode, ["inset"], "inset-" + index);
 
     var imageNode = htmlUtils.addImage(
       insetNode,
       ["mixed-nuts"],
-      "mixed-nuts-back-image"
+      "mixed-nuts-back-image-" + index
     );
-    htmlUtils.addDiv(insetNode, ["title"], "title", "Mixed Nuts");
+    htmlUtils.addDiv(
+      insetNode,
+      ["title", "small"],
+      "title-small-" + index,
+      "Mixed"
+    );
+    htmlUtils.addDiv(insetNode, ["title", "big"], "title-big-" + index, "Nuts");
 
     return backNode;
-  }
-
-  function calculatePlayerBasedInstanceCount(cardConfig) {
-    switch (cardConfig.playType) {
-      case "normal":
-        {
-          var scale = -1.5 * cardConfig.craft.points + 9;
-          retVal = Math.ceil(scale * gameInfo.maxPlayers + 1);
-        }
-        break;
-      case "challenge":
-        {
-          retVal = 4 * Math.ceil(gameInfo.maxPlayers / 2) + 2;
-        }
-        break;
-      default:
-        {
-          retVal = Math.ceil(gameInfo.maxPlayers / 2);
-        }
-        break;
-    }
-    return retVal;
   }
 
   function addCardFront(parent, cardConfig, index, opt_indexWithinConfig) {
@@ -511,20 +499,64 @@ define([
     addCardFront(parent, cardConfig, index, indexWithinConfig);
   }
 
-  // Use code to figure out how many of each card we need.
-  for (cardConfig of mixedNutsCardData.cardConfigs) {
-    debugLog(
-      "addCardFrontAtIndex",
-      "Doug: cardConfig = " + JSON.stringify(cardConfig)
-    );
-    cardConfig.count = calculatePlayerBasedInstanceCount(cardConfig);
-  }
-
   var gNumCards = 0;
   function getNumCards() {
     // Wait until we're asked to calculate so system configs can be applied.
     if (gNumCards === 0) {
+      for (cardConfig of mixedNutsCardData.cardConfigs) {
+        debugLog("getNumCards", "Doug: cardConfig.title = " + cardConfig.title);
+        debugLog(
+          "getNumCards",
+          "Doug: countConfigs = " + JSON.stringify(cardConfig.countConfigs)
+        );
+      }
+
       gNumCards = cards.getNumCardsFromConfigs(mixedNutsCardData.cardConfigs);
+      debugLog("getNumCards", "Doug: gNumCards = " + gNumCards);
+
+      // While we're here: how many in a game?  We only use 3 specials.
+      var specialCount = 0;
+      var cardsPerGameByPlayer = {};
+      for (cardConfig of mixedNutsCardData.cardConfigs) {
+        var countConfigs = cardConfig.countConfigs;
+        if (cardConfig.playType == "special") {
+          specialCount += 1;
+          if (specialCount > 3) {
+            debugLog("getNumCards", "Doug: skipping " + cardConfig.title);
+            continue;
+          }
+        }
+        debugLog("getNumCards", "Doug: counting " + cardConfig.title);
+        for (var i = 0; i < countConfigs.length; i++) {
+          var countConfig = countConfigs[i];
+          var numPlayers = countConfig.numPlayers;
+          var numCards = countConfig.numCards;
+          if (!cardsPerGameByPlayer[numPlayers]) {
+            cardsPerGameByPlayer[numPlayers] = 0;
+          }
+          cardsPerGameByPlayer[numPlayers] += numCards;
+        }
+      }
+      debugLog(
+        "getNumCards",
+        "How many cards are put into the deck in a real game: all the basics plus 3 specials: ",
+        JSON.stringify(cardsPerGameByPlayer)
+      );
+
+      var cardsNeededByPlayer = {};
+      for (
+        var numPlayers = 2;
+        numPlayers <= gameInfo.maxPlayers;
+        numPlayers++
+      ) {
+        cardsNeededByPlayer[numPlayers] =
+          mixedNutsCardData.totalCardsPerPlayer(numPlayers);
+      }
+      debugLog(
+        "getNumCards",
+        "How many cards are dealt out of the deck in a real game: some multiple of num players plus remainder: ",
+        JSON.stringify(cardsNeededByPlayer)
+      );
     }
     return gNumCards;
   }

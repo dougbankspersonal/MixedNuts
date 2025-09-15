@@ -38,21 +38,40 @@ define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
   const specialCounts = [
     {
       numPlayers: 2,
-      numCards: 2,
+      numCards: 1,
     },
     {
       numPlayers: 3,
-      numCards: 3,
+      numCards: 2,
     },
     {
       numPlayers: 4,
-      numCards: 4,
+      numCards: 3,
     },
     {
       numPlayers: 5,
-      numCards: 5,
+      numCards: 3,
     },
   ];
+
+  function cardsPerPlayerPerSeason(numPlayers) {
+    return 5 * numPlayers + 2;
+  }
+
+  function totalCardsPerPlayer(numPlayers) {
+    return cardsPerPlayerPerSeason(numPlayers) * 4;
+  }
+
+  function standardCardDistribution(denominator) {
+    var result = [];
+    for (var i = 2; i <= 5; i++) {
+      result.push({
+        numPlayers: i,
+        numCards: Math.ceil(totalCardsPerPlayer(i) / denominator),
+      });
+    }
+    return result;
+  }
 
   const gCardConfigs = [
     {
@@ -66,24 +85,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
       playType: "normal",
       color: peanutBackgroundColor,
       borderColor: basicBorderColor,
-      countConfigs: [
-        {
-          numPlayers: 2,
-          numCards: 20,
-        },
-        {
-          numPlayers: 3,
-          numCards: 30,
-        },
-        {
-          numPlayers: 4,
-          numCards: 40,
-        },
-        {
-          numPlayers: 5,
-          numCards: 50,
-        },
-      ],
+      countConfigs: standardCardDistribution(3),
     },
     {
       title: "Almond",
@@ -97,24 +99,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
       floor: -3,
       playType: "normal",
 
-      countConfigs: [
-        {
-          numCards: 16,
-          numPlayers: 2,
-        },
-        {
-          numCards: 24,
-          numPlayers: 3,
-        },
-        {
-          numCards: 32,
-          numPlayers: 4,
-        },
-        {
-          numCards: 40,
-          numPlayers: 5,
-        },
-      ],
+      countConfigs: standardCardDistribution(3.8),
     },
     {
       title: "Cashew",
@@ -128,24 +113,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
       },
       floor: -4,
       playType: "normal",
-      countConfigs: [
-        {
-          numCards: 7,
-          numPlayers: 2,
-        },
-        {
-          numCards: 14,
-          numPlayers: 3,
-        },
-        {
-          numCards: 21,
-          numPlayers: 4,
-        },
-        {
-          numCards: 28,
-          numPlayers: 5,
-        },
-      ],
+      countConfigs: standardCardDistribution(4.6),
     },
     {
       title: "Macadamia",
@@ -159,24 +127,7 @@ define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
       floor: -5,
       playType: "challenge",
       fontAdjustment: 0.8,
-      countConfigs: [
-        {
-          numCards: 9,
-          numPlayers: 2,
-        },
-        {
-          numCards: 13,
-          numPlayers: 3,
-        },
-        {
-          numCards: 17,
-          numPlayers: 4,
-        },
-        {
-          numCards: 21,
-          numPlayers: 5,
-        },
-      ],
+      countConfigs: standardCardDistribution(6.2),
     },
     {
       title: "Bad Nut",
@@ -281,10 +232,21 @@ define(["javascript/gameInfo", "dojo/domReady!"], function (gameInfo) {
     },
   ];
 
+  function completeCardConfigs() {
+    // Must be done before doing anything else.
+    for (var cardConfig of gCardConfigs) {
+      var lastIndex = cardConfig.countConfigs.length - 1;
+      cardConfig.count = cardConfig.countConfigs[lastIndex].numCards;
+    }
+  }
+
   // This returned object becomes the defined value of this module
   return {
     cardConfigs: gCardConfigs,
     customTypes: gCustomTypes,
     customTypesArray: gCustomTypesArray,
+
+    completeCardConfigs: completeCardConfigs,
+    totalCardsPerPlayer: totalCardsPerPlayer,
   };
 });

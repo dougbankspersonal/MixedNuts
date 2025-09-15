@@ -230,15 +230,18 @@
   border-width: 10px;
   border-style: solid;
   border-color: #664433;
+  position: relative;
+  background: radial-gradient(#eeccaa 50%, #997755);
 
   .inset {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
     border-radius: 0;
-    background: radial-gradient(#eeccaa 50%, #997755);
+    position: relative;
 
     .mixed-nuts {
       display: flex;
@@ -247,20 +250,38 @@
       justify-content: center;
       width: 150px;
       height: 150px;
+      position: absolute;
+      top: 40px;
+      z-index: 1;
     }
 
     .title {
-      font-size: 36px;
-      line-height: 1;
+      position: absolute;
       font-family: "Luckiest Guy";
       text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
         1px 1px 0 #fff;
       font-weight: bold;
-      white-space: wrap;
       width: 80%;
-      text-align: center;
-      white-space: normal;
       color: #332211;
+      line-height: 1;
+      /* keeps text from pushing height */
+      text-align: center;
+      white-space: nowrap;
+      /* stops wrapping in print */
+      overflow: hidden;
+      /* ensures it won’t spill */
+    }
+
+    .title.small {
+      font-size: 30px;
+      top: 170px;
+      z-index: 2;
+    }
+
+    .title.big {
+      font-size: 50px;
+      top: 190px;
+      z-index: 3;
     }
   }
 }

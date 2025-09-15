@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .card_array > .page-of-items-contents > .card.mixed-nuts-component {
   box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.5);
 }
@@ -24,8 +25,7 @@
 
 .card.mixed-nuts-component {
   font-family: "Luckiest Guy";
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-    1px 1px 0 #fff;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   font-weight: bold;
 }
 
@@ -115,11 +115,7 @@
   position: relative;
   padding-right: 10px;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .craft-wrapper
-  .card-collection
-  .minicard {
+.card.front.mixed-nuts-component .main_wrapper .craft-wrapper .card-collection .minicard {
   position: absolute;
   top: 0px;
 }
@@ -138,11 +134,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .floor_wrapper
-  .colon_and_points
-  .negative {
+.card.front.mixed-nuts-component .main_wrapper .floor_wrapper .colon_and_points .negative {
   color: #994444;
 }
 .card.front.mixed-nuts-component .main_wrapper .colon_and_points {
@@ -162,42 +154,26 @@
   display: flex;
   flex-direction: row;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .custom-rendering-wrapper
-  .pseudo-image {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .pseudo-image {
   height: 50px;
   width: 50px;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .custom-rendering-wrapper
-  .pseudo-image.plus-one-pt {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .pseudo-image.plus-one-pt {
   width: 70px;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .custom-rendering-wrapper
-  .nut-rows {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .nut-rows {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .custom-rendering-wrapper
-  .nut-rows
-  .nut-row {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper .nut-rows .nut-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.card.front.mixed-nuts-component
-  .main_wrapper
-  .custom-rendering-wrapper.mixed-nuts
-  .nut-rows {
+.card.front.mixed-nuts-component .main_wrapper .custom-rendering-wrapper.mixed-nuts .nut-rows {
   padding-right: 10px;
 }
 .card.front.mixed-nuts-component .main_wrapper .custom {
@@ -218,15 +194,18 @@
   border-width: 10px;
   border-style: solid;
   border-color: #664433;
+  position: relative;
+  background: radial-gradient(#eeccaa 50%, #997755);
 }
 .card.back.mixed-nuts .inset {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
   border-radius: 0;
-  background: radial-gradient(#eeccaa 50%, #997755);
+  position: relative;
 }
 .card.back.mixed-nuts .inset .mixed-nuts {
   display: flex;
@@ -235,19 +214,34 @@
   justify-content: center;
   width: 150px;
   height: 150px;
+  position: absolute;
+  top: 40px;
+  z-index: 1;
 }
 .card.back.mixed-nuts .inset .title {
-  font-size: 36px;
-  line-height: 1;
+  position: absolute;
   font-family: "Luckiest Guy";
-  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
-    1px 1px 0 #fff;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
   font-weight: bold;
-  white-space: wrap;
   width: 80%;
-  text-align: center;
-  white-space: normal;
   color: #332211;
+  line-height: 1;
+  /* keeps text from pushing height */
+  text-align: center;
+  white-space: nowrap;
+  /* stops wrapping in print */
+  overflow: hidden;
+  /* ensures it won’t spill */
+}
+.card.back.mixed-nuts .inset .title.small {
+  font-size: 30px;
+  top: 170px;
+  z-index: 2;
+}
+.card.back.mixed-nuts .inset .title.big {
+  font-size: 50px;
+  top: 190px;
+  z-index: 3;
 }
 
 /*# sourceMappingURL=mixed_nuts_components.css.map */

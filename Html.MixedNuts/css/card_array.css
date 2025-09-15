@@ -1,7 +1,43 @@
 .card-array.page-of-items {
   overflow: visible;
 }
-.card-array.page-of-items .page-of-items-contents .array-wrapper {
+.card-array.page-of-items .page-of-items-contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+}
+.card-array.page-of-items .page-of-items-contents .bids-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+.card-array.page-of-items .page-of-items-contents .bids-row .bid {
+  height: 160px;
+  width: 240px;
+  border: black 8px solid;
+  border-radius: 10px;
+  font-size: 130px;
+  font-family: "Lucida Handwriting", cursive;
+}
+.card-array.page-of-items .page-of-items-contents .bids-row .bid.red {
+  color: red;
+}
+.card-array.page-of-items .page-of-items-contents .bids-row .bid.blue {
+  color: blue;
+}
+.card-array.page-of-items .page-of-items-contents .bids-row .bid.green {
+  color: green;
+}
+.card-array.page-of-items .page-of-items-contents .card-array-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,10 +45,10 @@
   align-items: center;
   width: fit-content;
   height: fit-content;
-  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.card-array.page-of-items .page-of-items-contents .array-wrapper .mixed-nuts-component.card {
-  margin-right: -60px;
+.card-array.page-of-items .page-of-items-contents .card-array-row .mixed-nuts-component.card {
   box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.18);
 }
 

@@ -64,29 +64,81 @@
         var debugLog = debugLogModule.debugLog;
 
         const gCardWiggleDegrees = 7;
+
         var getRandomZeroToOne =
-          genericUtils.createSeededGetZeroToOneRandomFunction(9455002);
+          genericUtils.createSeededGetZeroToOneRandomFunction(67888);
         var sc = systemConfigs.getCardSystemConfigs();
         sc.pageless = true;
         systemConfigs.setSystemConfigs(sc);
 
         var sortedCardConfigTitles = [
-          "Peanut",
-          "Peanut",
-          "Peanut",
           "Almond",
           "Almond",
 
           "Almond",
+          "Almond",
+          "Peanut",
+          "Peanut",
+          "Peanut",
           "Cashew",
           "Cashew",
+          "Cashew",
+
+          "Cashew",
+          "Macadamia",
+          "Macadamia",
           "Macadamia",
           "Bad Nut",
 
-          "Broom",
           "Honey Roasted",
           "Raisin",
         ];
+
+        var explicitCardConfigTitles = [
+          "Peanut",
+          "Almond",
+          "Cashew",
+          "Bad Nut",
+          "Cashew",
+
+          "Macadamia",
+          "Almond",
+          "Peanut",
+          "Peanut",
+          "Macadamia",
+
+          "Honey Roasted",
+          "Peanut",
+        ];
+
+        var useBidDetails = false;
+        //        var useBidDetails = true;
+        var bidDetails;
+        if (useBidDetails) {
+          bidDetails = [
+            {
+              color: "green",
+              bid: 3,
+            },
+            {
+              color: "red",
+              bid: 6,
+            },
+          ];
+        }
+        function addRandomWiggleToNode(node, zIndex) {
+          var randomDegrees = genericUtils.getRandomIntInRange(
+            -gCardWiggleDegrees,
+            gCardWiggleDegrees,
+            getRandomZeroToOne
+          );
+          debugLog("CardArray", "randomDegrees: " + randomDegrees);
+
+          domStyle.set(node, {
+            transform: `rotate(${randomDegrees}deg)`,
+            "z-index": zIndex,
+          });
+        }
 
         var randomizedCardConfigTitles = genericUtils.generateRandomizedArray(
           sortedCardConfigTitles,
@@ -96,21 +148,48 @@
         var bodyNode = dom.byId("body");
         [_pageOfItemsNode, pageOfItemsContentsNode] =
           htmlUtils.addPageOfItemsAndContents(bodyNode, ["card-array"]);
-        var cardArrayNode = htmlUtils.addDiv(
-          pageOfItemsContentsNode,
-          ["array-wrapper"],
-          "array-wrapper"
-        );
 
-        for (var i = 0; i < randomizedCardConfigTitles.length; i++) {
-          var title = randomizedCardConfigTitles[i];
+        // Add a row of bids.
+        if (bidDetails) {
+          var bidsRowNode = htmlUtils.addDiv(
+            pageOfItemsContentsNode,
+            ["bids-row"],
+            "bidsRow"
+          );
+
+          for (var i = 0; i < bidDetails.length; i++) {
+            var bidDetail = bidDetails[i];
+            var bidNode = htmlUtils.addDiv(
+              bidsRowNode,
+              ["bid", bidDetail.color],
+              "bid" + i,
+              bidDetail.bid
+            );
+            addRandomWiggleToNode(bidNode, bidDetails.length - i);
+          }
+        }
+
+        var cardArrayNode;
+        var rowLength = 20;
+        var myListOfTitles = explicitCardConfigTitles;
+
+        for (var i = 0; i < myListOfTitles.length; i++) {
+          if (i % rowLength == 0) {
+            cardArrayNode = htmlUtils.addDiv(
+              pageOfItemsContentsNode,
+              ["card-array-row"],
+              "cardArrayRow" + Math.floor(i / rowLength)
+            );
+          }
+
+          var title = myListOfTitles[i];
           var cardConfig = mixedNutsCards.getCardConfigByTitle(title);
           if (!cardConfig) {
             debugLog.log("No card config found for title: " + title);
           } else {
             var cardNode;
             // Final card is face down.
-            if (i == randomizedCardConfigTitles.length - 1) {
+            if (i == myListOfTitles.length - 1) {
               cardNode = mixedNutsCards.addCardBack(cardArrayNode, i);
             } else {
               cardNode = mixedNutsCards.addCardFront(
@@ -120,17 +199,7 @@
                 0
               );
             }
-            var randomDegrees = genericUtils.getRandomIntInRange(
-              -gCardWiggleDegrees,
-              gCardWiggleDegrees,
-              getRandomZeroToOne
-            );
-            debugLog("CardArray", "randomDegrees: " + randomDegrees);
-
-            domStyle.set(cardNode, {
-              transform: `rotate(${randomDegrees}deg)`,
-              "z-index": randomizedCardConfigTitles.length + 1 - i,
-            });
+            addRandomWiggleToNode(cardNode, myListOfTitles.length - i);
           }
         }
       });

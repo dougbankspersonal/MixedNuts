@@ -2,7 +2,47 @@
   overflow: visible;
 
   .page-of-items-contents {
-    .array-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+
+    .bids-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+      height: fit-content;
+      padding-bottom: 10px;
+      gap: 20px;
+
+      .bid {
+        height: 160px;
+        width: 240px;
+        border: black 8px solid;
+        border-radius: 10px;
+        font-size: 130px;
+        font-family: "Lucida Handwriting", cursive;
+      }
+
+      .bid.red {
+        color: red;
+      }
+
+      .bid.blue {
+        color: blue;
+      }
+
+      .bid.green {
+        color: green;
+      }
+    }
+
+    .card-array-row {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -10,10 +50,10 @@
       align-items: center;
       width: fit-content;
       height: fit-content;
-      padding: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
 
       .mixed-nuts-component.card {
-        margin-right: -60px;
         box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.18);
       }
     }

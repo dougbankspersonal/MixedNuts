@@ -42,20 +42,24 @@
 
     <script>
       require([
-        "javascript/mixedNutsCards",
         "sharedJavascript/cards",
         "sharedJavascript/debugLog",
         "sharedJavascript/genericUtils",
         "sharedJavascript/systemConfigs",
+        "javascript/mixedNutsCardData",
+        "javascript/mixedNutsCards",
       ], function (
-        mixedNutsCards,
         cards,
         debugLog,
         genericUtils,
-        systemConfigs
+        systemConfigs,
+        mixedNutsCardData,
+        mixedNutsCards
       ) {
         var sc = systemConfigs.getCardSystemConfigs();
         systemConfigs.setSystemConfigs(sc);
+
+        mixedNutsCardData.completeCardConfigs();
 
         cards.addCards(
           mixedNutsCards.getNumCards(),
